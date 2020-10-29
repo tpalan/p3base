@@ -1,0 +1,6 @@
+<openerp>
+    <data>
+        <function model="res.country" name="_init_p3">
+        </function>
+    </data>
+</openerp>
