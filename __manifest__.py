@@ -26,7 +26,8 @@
     'data': [
         # 'security/ir.model.access.csv',
         'data/data.sql',
-        'views/views.xml'
+        'views/views.xml',
+        'views/report_templates.xml'
     ],
     'installable': True
 }
