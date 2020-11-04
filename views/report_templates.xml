@@ -71,9 +71,9 @@
             </div>
         </xpath>
 
-        <!-- add padding before customer address
+        <!-- add padding before customer address -->
         <xpath expr="//address" position="attributes">
             <attribute name="style">padding-top:2.5em</attribute>
-        </xpath> -->
+        </xpath>
     </template>
 </odoo>
