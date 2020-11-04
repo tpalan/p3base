@@ -16,7 +16,7 @@
         <xpath expr="//div[@name='company_address']" position="replace"/>
 
         <!-- format footer (incl. our own address) -->
-        <xpath expr="//div[@class='text-center']" position="replace">
+        <xpath expr="//div[hasclass('text-center')]" position="replace">
             <div class="row zero_min_height">
                 <div class="col-12">
                     <div style="border-bottom: 1px solid black;"/>
@@ -47,12 +47,12 @@
         </xpath>
 
         <!-- padding between customer address and Invoice -->
-        <xpath expr="//div[@class='page']/h2" position="before">
+        <xpath expr="//div[hasclass('page')]/h2" position="before">
             <div style="padding-top:2.5em"></div>
         </xpath>
 
         <!-- padding before payment info/terms -->
-        <xpath expr="//div[@class='clearfix']" position="after">
+        <xpath expr="//div[hasclass('clearfix')]" position="after">
             <div style="padding-top:2.5em"></div>
         </xpath>
 
@@ -66,8 +66,14 @@
                 <p t-if="(o.invoice_partner_bank_id.qr_code_valid)">
                     <strong class="text-center">QR-Code zur Überweisung:</strong><br/><br/>
                     <img t-att-src="o.invoice_partner_bank_id.build_qr_code_url(o.amount_residual, o.invoice_payment_ref or o.ref or o.name)"/>
+                    <!-- <img t-att-src="'/report/qr/?value=%s&amp;error_correction=%s' % ('HELLO WORLD!', 3)" style="width:100;height:100"/> -->
                 </p>
             </div>
         </xpath>
+
+        <!-- add padding before customer address
+        <xpath expr="//address" position="attributes">
+            <attribute name="style">padding-top:2.5em</attribute>
+        </xpath> -->
     </template>
 </odoo>
