@@ -38,6 +38,7 @@
         </xpath>
     </template>
 
+    <!-- Invoice document -->
     <template id="p3base.invoice_document" inherit_id="account.report_invoice_document">
         <!-- remove vat from address -->
         <xpath expr="//div[@t-if='o.partner_id.vat']" position="replace">
@@ -93,5 +94,29 @@
         <xpath expr="//address" position="attributes">
             <attribute name="style">padding-top:2.5em</attribute>
         </xpath>
+    </template>
+
+    <!-- Sale Order -->
+    <template id="p3base.sale_order_document" inherit_id="sale.report_saleorder_document">
+        <!-- padding between customer address and Angebot -->
+        <xpath expr="//div[hasclass('page')]/h2" position="before">
+            <div style="padding-top:2.5em"></div>
+        </xpath>
+
+        <!-- remove tax ids in line -->
+        <xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[@name='th_taxes']" position="replace"/>
+        <xpath expr="//t[@t-if='not line.display_type']/td[@name='td_taxes']" position="replace"/>
+
+        <!-- remove tax base in taxes amount_by_group -->
+        <xpath expr="//td[@name='td_amount_by_group_label_3']/span/following-sibling::span" position="replace"/>
+        <xpath expr="//td[@name='td_amount_by_group']/span" position="replace">
+            <span class="text-nowrap" t-esc="amount_by_group[3]"/>
+        </xpath>
+
+        <!-- Allow HTML in sale order terms -->
+        <xpath expr="//p[@t-field='doc.note']" position="replace">
+            <p t-raw="doc.note"/>
+        </xpath>
+
     </template>
 </odoo>
