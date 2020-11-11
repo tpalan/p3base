@@ -94,6 +94,11 @@
         <xpath expr="//address" position="attributes">
             <attribute name="style">padding-top:2.5em</attribute>
         </xpath>
+
+        <!-- Allow HTML in invoice comment -->
+        <xpath expr="//span[@t-field='o.narration']" position="replace">
+            <span t-raw="o.narration"/>
+        </xpath>
     </template>
 
     <!-- Sale Order -->
