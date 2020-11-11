@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="p3base.message_notification_email" inherit_id="mail.message_notification_email" priority="8">
+        <!-- disable odoo footer -->
+        <xpath expr="//p[@style='color: #555555; margin-top:32px;']" position="replace"/>
+    </template>
+    <template id="p3base.mail_notification_paynow" inherit_id="mail.mail_notification_paynow" priority="8">
+        <!-- remove "Ihr Rechnung ..." from header -->
+        <xpath expr="//table/tr/td[@valign='middle']" position="replace"/>
+        <!-- remove portal link -->
+        <xpath expr="//a[@t-att-href='access_url']" position="replace"/>
+        <!-- remove Powered by odoo (because of stupid german translation) -->
+        <xpath expr="//table/tr/td[@style='min-width: 590px; padding: 8px; font-size:11px;']" position="replace">
+            <td></td>
+        </xpath>
+    </template>
+</odoo>
